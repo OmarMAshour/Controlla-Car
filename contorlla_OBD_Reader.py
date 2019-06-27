@@ -16,13 +16,21 @@ firebase = pyrebase.initialize_app(firebase_config)
 
 db = firebase.database()
 
-
 connection = obd.OBD() # auto-connects to USB or RF port
 
 i = 0
 
 
 def readOBD():
+
+    Reset_DTC_Value  = db.child("RESET_DTC").child(username).get().val()
+    print("REST DTC ==> "+ Reset_DTC_Value)
+    if Reset_DTC_Value=='RESET':
+        connection.query(obd.commands.CLEAR_DTC, force=True)
+        Reset_DTC_Value = 'DONE'
+        db.child("RESET_DTC").child(username).set(Reset_DTC_Value)
+        print("REST DTC ==> " + Reset_DTC_Value)
+
     global i
 
     if i==46:
