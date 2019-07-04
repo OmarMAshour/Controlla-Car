@@ -1,6 +1,7 @@
 import obd, schedule
 import time
 import pyrebase
+import json
 
 username = 'Omar Ashour'
 
@@ -40,11 +41,19 @@ def readOBD():
         print("ENGINE_LOAD ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_ENGINE_LOAD").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_ENGINE_LOAD").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_ENGINE_LOAD").set(json.dumps(list))
     elif i==1:
         result = str(connection.query(obd.commands.RPM, force=True).value)
         print("RPM ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_RPM").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_RPM").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_RPM").set(json.dumps(list))
     elif i==2:
         result = str(connection.query(obd.commands.SPEED, force=True).value)
         print("SPEED ==> " + result)
@@ -55,11 +64,19 @@ def readOBD():
         print("THROTTLE_POS ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_THROTTLE_POS").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_THROTTLE_POSITION").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_THROTTLE_POSITION").set(json.dumps(list))
     elif i==4:
         result = str(connection.query(obd.commands.COOLANT_TEMP, force=True).value)
         print("COOLANT_TEMP ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_COOLANT_TEMP").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_COOLANT_TEMPERATURE").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_COOLANT_TEMPERATURE").set(json.dumps(list))
     elif i==5:
         result = str(connection.query(obd.commands.FUEL_PRESSURE, force=True).value)
         print("FUEL_PRESSURE ==> " + result)
@@ -70,11 +87,19 @@ def readOBD():
         print("ENGINE_LOAD ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_ENGINE_LOAD").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_ENGINE_LOAD").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_ENGINE_LOAD").set(json.dumps(list))
     elif i==7:
         result = str(connection.query(obd.commands.RPM, force=True).value)
         print("RPM ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_RPM").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_RPM").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_RPM").set(json.dumps(list))
     elif i==8:
         result = str(connection.query(obd.commands.SPEED, force=True).value)
         print("SPEED ==> " + result)
@@ -85,21 +110,37 @@ def readOBD():
         print("THROTTLE_POS ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_THROTTLE_POS").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_THROTTLE_POSITION").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_THROTTLE_POSITION").set(json.dumps(list))
     elif i==10:
         result = str(connection.query(obd.commands.INTAKE_PRESSURE, force=True).value)
         print("INTAKE_PRESSURE ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_INTAKE_PRESSURE").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_INTAKE_PRESSURE").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_INTAKE_PRESSURE").set(json.dumps(list))
     elif i==11:
         result = str(connection.query(obd.commands.ENGINE_LOAD, force=True).value)
         print("ENGINE_LOAD ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_ENGINE_LOAD").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_ENGINE_LOAD").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_ENGINE_LOAD").set(json.dumps(list))
     elif i==12:
         result = str(connection.query(obd.commands.RPM, force=True).value)
         print("RPM ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_RPM").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_RPM").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_RPM").set(json.dumps(list))
     elif i==13:
         result = str(connection.query(obd.commands.SPEED, force=True).value)
         print("SPEED ==> " + result)
@@ -110,6 +151,10 @@ def readOBD():
         print("THROTTLE_POS ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_THROTTLE_POS").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_THROTTLE_POSITION").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_THROTTLE_POSITION").set(json.dumps(list))
     elif i==15:
         result = str(connection.query(obd.commands.TIMING_ADVANCE, force=True).value)
         print("TIMING_ADVANCE ==> " + result)
@@ -120,11 +165,19 @@ def readOBD():
         print("ENGINE_LOAD ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_ENGINE_LOAD").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_ENGINE_LOAD").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_ENGINE_LOAD").set(json.dumps(list))
     elif i==17:
         result = str(connection.query(obd.commands.RPM, force=True).value)
         print("RPM ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_RPM").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_RPM").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_RPM").set(json.dumps(list))
     elif i==18:
         result = str(connection.query(obd.commands.SPEED, force=True).value)
         print("SPEED ==> " + result)
@@ -135,11 +188,19 @@ def readOBD():
         print("THROTTLE_POS ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_THROTTLE_POS").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_THROTTLE_POSITION").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_THROTTLE_POSITION").set(json.dumps(list))
     elif i==20:
         result = str(connection.query(obd.commands.INTAKE_TEMP, force=True).value)
         print("INTAKE_TEMP ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_INTAKE_TEMP").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_INTAKE_PRESSURE").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_INTAKE_PRESSURE").set(json.dumps(list))
     elif i==21:
         result = str(connection.query(obd.commands.MAF, force=True).value)
         print("MAF ==> " + result)
@@ -150,21 +211,37 @@ def readOBD():
         print("ENGINE_LOAD ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_ENGINE_LOAD").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_ENGINE_LOAD").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_ENGINE_LOAD").set(json.dumps(list))
     elif i==23:
         result = str(connection.query(obd.commands.RPM, force=True).value)
         print("RPM ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_RPM").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_RPM").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_RPM").set(json.dumps(list))
     elif i==24:
         result = str(connection.query(obd.commands.SPEED, force=True).value)
         print("SPEED ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_SPEED").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_SPEED").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_SPEED").set(json.dumps(list))
     elif i==25:
         result = str(connection.query(obd.commands.THROTTLE_POS, force=True).value)
         print("THROTTLE_POS ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_THROTTLE_POS").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_THROTTLE_POSITION").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_THROTTLE_POSITION").set(json.dumps(list))
     elif i==26:
         result = str(connection.query(obd.commands.FUEL_LEVEL, force=True).value)
         print("FUEL_LEVEL ==> " + result)
@@ -175,21 +252,37 @@ def readOBD():
         print("ENGINE_LOAD ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_ENGINE_LOAD").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_ENGINE_LOAD").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_ENGINE_LOAD").set(json.dumps(list))
     elif i==30:
         result =  str(connection.query(obd.commands.RPM, force=True).value)
         print("RPM ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_RPM").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_RPM").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_RPM").set(json.dumps(list))
     elif i==31:
         result = str(connection.query(obd.commands.SPEED, force=True).value)
         print("SPEED ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_SPEED").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_SPEED").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_SPEED").set(json.dumps(list))
     elif i == 32:
         result = str(connection.query(obd.commands.THROTTLE_POS, force=True).value)
         print("THROTTLE_POS ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_THROTTLE_POS").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_THROTTLE_POSITION").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_THROTTLE_POSITION").set(json.dumps(list))
     elif i==33:
         result = str(connection.query(obd.commands.FUEL_TYPE, force=True).value)
         print("FUEL_TYPE ==> " + result)
@@ -205,21 +298,37 @@ def readOBD():
         print("ENGINE_LOAD ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_ENGINE_LOAD").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_ENGINE_LOAD").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_ENGINE_LOAD").set(json.dumps(list))
     elif i==36:
         result = str(connection.query(obd.commands.RPM, force=True).value)
         print("RPM ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_RPM").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_RPM").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_RPM").set(json.dumps(list))
     elif i==37:
         result = str(connection.query(obd.commands.SPEED, force=True).value)
         print("SPEED ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_SPEED").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_SPEED").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_SPEED").set(json.dumps(list))
     elif i == 38:
         result = str(connection.query(obd.commands.THROTTLE_POS, force=True).value)
         print("THROTTLE_POS ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_THROTTLE_POS").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_THROTTLE_POSITION").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_THROTTLE_POSITION").set(json.dumps(list))
     elif i==39:
         result = str(connection.query(obd.commands.FUEL_INJECT_TIMING, force=True).value)
         print("FUEL_INJECT_TIMING ==> " + result)
@@ -235,21 +344,37 @@ def readOBD():
         print("ENGINE_LOAD ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_ENGINE_LOAD").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_ENGINE_LOAD").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_ENGINE_LOAD").set(json.dumps(list))
     elif i==42:
         result = str(connection.query(obd.commands.RPM, force=True).value)
         print("RPM ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_RPM").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_RPM").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_RPM").set(json.dumps(list))
     elif i==43:
         result = str(connection.query(obd.commands.SPEED, force=True).value)
         print("SPEED ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_SPEED").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_SPEED").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_SPEED").set(json.dumps(list))
     elif i == 44:
         result = str(connection.query(obd.commands.THROTTLE_POS, force=True).value)
         print("THROTTLE_POS ==> " + result)
         if(result!='None'):
             db.child("L_READINGS").child(username).child("L_THROTTLE_POS").set(result)
+            list = []
+            list = json.loads(db.child("HISTORY").child(username).child("H_THROTTLE_POSITION").get().val())
+            list.append(result)
+            db.child("HISTORY").child(username).child("H_THROTTLE_POSITION").set(json.dumps(list))
     elif i == 45:
         resultDTC = []
         resultDTC.append(connection.query(obd.commands.GET_DTC, force=True).value)
